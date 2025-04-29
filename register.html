@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Register</title>
+  <style>
+    * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: #f5f9ff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.container {
+  background-color: #ffffff;
+  padding: 40px 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 420px;
+  min-width: 300px;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+p {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 14px;
+  color: #666;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+img{
+    width: 50%;
+    padding: 2%;
+    background-color:cadetblue;
+    margin-left: 25%;
+}
+/* MEDIA QUERIES FOR SMALL DEVICES */
+@media screen and (max-width: 480px) {
+  .container {
+    padding: 30px 20px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  p, input, button {
+    font-size: 14px;
+  }
+
+  button {
+    padding: 10px;
+  }
+}
+  </style>
+</head>
+<body>
+
+    <div class="container">
+        <img src="Vebspot-Logo.png" alt="Logo" class="logo">
+    
+        <h2>New here?</h2>
+        <p>Signing up is easy. It only takes a few steps</p>
+    
+        <form id="registerForm">
+          <input type="text" id="firstName" placeholder="Enter First Name" required>
+          <input type="text" id="lastName" placeholder="Enter Last Name" required>
+          <input type="email" id="email" placeholder="Enter Your Email" required>
+          <input type="text" id="contactNumber" placeholder="Contact Number" required>
+          <input type="password" id="password" placeholder="Enter Password (Minimum 6 characters)" required>
+          <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+          <button type="submit">REGISTER</button>
+        </form>
+    
+        <p>Already have an account? <a href="index.html">Login</a></p>
+      </div>
+
+  <script>
+    document.getElementById("registerForm").addEventListener("submit", function(e){
+      e.preventDefault();
+
+      const firstName = document.getElementById("firstName").value.trim();
+      const lastName = document.getElementById("lastName").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const contactNumber = document.getElementById("contactNumber").value.trim();
+      const password = document.getElementById("password").value.trim();
+      const confirmPassword = document.getElementById("confirmPassword").value.trim();
+
+      if(password !== confirmPassword){
+        alert("Passwords do not match!");
+        return;
+      }
+
+      const user = {
+        firstName,
+        lastName,
+        email,
+        contactNumber,
+        password
+      };
+
+      localStorage.setItem(email, JSON.stringify(user)); 
+      alert("Registration Successful!");
+
+      window.location.href = "index.html"; 
+    });
+  </script>
+
+</body>
+</html>
